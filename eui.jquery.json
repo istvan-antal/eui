@@ -1,0 +1,27 @@
+{
+  "name": "eui",
+  "title": "Extended User Interface",
+  "description": "A mini framework for fast and responsive UI that is invoked from HTML.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/istvan-antal/eui",
+  "author": {
+    "name": "István Miklós Antal",
+    "email": "istvan.m.antal@gmail.com",
+    "url": "http://istvan-antal.ro/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://git@github.com:istvan-antal/eui.git"
+  },
+  "bugs": "https://github.com/istvan-antal/eui/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/istvan-antal/eui/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "*"
+  },
+  "keywords": []
+}
