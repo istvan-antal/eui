@@ -7,7 +7,7 @@
  * Licensed under the MIT license.
  */
 
-(function () {
+(function ($) {
     "use strict";
     var widgetTypes = {};
     
