@@ -3,13 +3,25 @@
 A mini framework for fast and responsive UI that is invoked from HTML.
 
 ## Getting Started
-_(Coming soon)_
+
+```bash
+git clone git://github.com/istvan-antal/eui.git
+cd eui
+npm install
+grunt build
+```
 
 ## Documentation
-_(Coming soon)_
+
+```bash
+grunt doc
+```
+
+And see docs.
 
 ## Examples
-_(Coming soon)_
+
+See demos/index.html
 
 ## Release History
 _(Nothing yet)_
