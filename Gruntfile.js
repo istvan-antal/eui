@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                 ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         // Task configuration.
         clean: {
-            files: ['dist']
+            files: ['dist', 'docs']
         },
         concat: {
             options: {
@@ -114,11 +114,21 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
+    
+    grunt.registerTask('make-dirs', function () {
+        var fs = require('fs');
+        
+        ['dist', 'docs'].forEach(function (dir) {
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
+        });
+    });
 
     // Check
     grunt.registerTask('check', ['jshint', 'qunit']);
     grunt.registerTask('doc', ['yuidoc']);
-    grunt.registerTask('build', ['check', 'doc', 'uglify', 'copy']);
+    grunt.registerTask('build', ['make-dirs', 'check', 'doc', 'uglify', 'copy']);
 
     // Default task.
     grunt.registerTask('default', ['check']);
