@@ -8,6 +8,8 @@
     "test": "grunt qunit"
   },
   "devDependencies": {
+    "grunt-contrib-copy": "0.4.0",
+    "grunt-contrib-yuidoc": "0.4.0",
     "grunt-contrib-jshint": "0.1.1rc6",
     "grunt-contrib-qunit": "0.1.1rc6",
     "grunt-contrib-concat": "0.1.2rc6",

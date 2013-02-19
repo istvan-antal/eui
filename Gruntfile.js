@@ -23,16 +23,36 @@ module.exports = function(grunt) {
             dist: {
                 src: ['src/<%= pkg.name %>.js'],
                 dest: 'dist/<%= pkg.name %>.js'
-            },
+            }
         },
         uglify: {
-            options: {
-                banner: '<%= banner %>'
-            },
-            dist: {
-                src: '<%= concat.dist.dest %>',
-                dest: 'dist/<%= pkg.name %>.min.js'
-            },
+            all: {
+                files: {
+                    "dist/eui.min.js": ["src/jquery-livequery.js", "src/eui.js", "src/eui.widget.js", "src/eui.widget.tabs.js", "src/eui.widget.datepicker.js"]
+                },
+                options: {
+                    banner: "/* BUILD */",
+                    sourceMap: "dist/eui.min.map",
+                    //sourceMapPrefix: 1,
+                    sourceMappingURL: 'eui.min.map',
+                    compress: {
+                        hoist_funs: false,
+                        join_vars: false,
+                        loops: false,
+                        unused: false
+                    },
+                    beautify: {
+                        ascii_only: true
+                    }
+                }
+            }
+        },
+        copy: {
+            main: {
+                files: [
+                    { src: 'src/*', dest: 'dist/', filter: 'isFile' }
+                ]
+            }
         },
         qunit: {
             files: ['test/**/*.html']
@@ -55,7 +75,19 @@ module.exports = function(grunt) {
                     jshintrc: 'test/.jshintrc'
                 },
                 src: ['test/**/*.js']
-            },
+            }
+        },
+        yuidoc: {
+            compile: {
+                name: '<%= pkg.name %>',
+                description: '<%= pkg.description %>',
+                version: '<%= pkg.version %>',
+                url: '<%= pkg.homepage %>',
+                options: {
+                    paths: 'src/',
+                    outdir: 'docs/'
+                }
+            }
         },
         watch: {
             gruntfile: {
@@ -69,20 +101,25 @@ module.exports = function(grunt) {
             test: {
                 files: '<%= jshint.test.src %>',
                 tasks: ['jshint:test', 'qunit']
-            },
-        },
+            }
+        }
     });
 
     // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-yuidoc');
 
-    // Default task.
+    // Check
     grunt.registerTask('check', ['jshint', 'qunit']);
+    grunt.registerTask('doc', ['yuidoc']);
+    grunt.registerTask('build', ['check', 'doc', 'uglify', 'copy']);
+
     // Default task.
     grunt.registerTask('default', ['check']);
 

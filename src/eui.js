@@ -6,6 +6,11 @@
  * Licensed under the MIT license.
  */
 
+/**
+ * @class $
+ * @static
+ */
+
 (function($) {
     var nodeMethods = {
         },
@@ -21,6 +26,7 @@
         }
     };
 
+    
     $.extend($.fn, {
         eui: function (method) {
             return nodeMethods[method].apply(this, Array.prototype.slice.call(arguments, 1));
@@ -28,6 +34,22 @@
     });
     
     $.extend($, {
+        /**
+        * Executes a global EUI method.
+        *  
+        *
+         
+         @example
+         $.eui('extend', { 
+           alert: function (arg) { 
+               alert(arg);
+           } 
+        });
+        
+        * @method eui
+        * @param {String} method
+        * @param [params] 
+        */
         eui: function (method) {
             return globalMethods[method].apply(this, Array.prototype.slice.call(arguments, 1));
         }
