@@ -7,9 +7,17 @@
         <script src="../libs/jquery-loader.js"></script>
         <!-- Load local QUnit. -->
         <link rel="stylesheet" href="../libs/qunit/qunit.css" media="screen">
+        <link rel="stylesheet" href="../libs/jquery-ui/css/smoothness/jquery-ui-1.10.1.custom.css">
         <script src="../libs/qunit/qunit.js"></script>
         <!-- Load local lib and tests. -->
+        <script src="../libs/jquery/jquery.js"></script>
+        <script src="../libs/jquery-ui/js/jquery-ui-1.10.1.custom.js"></script>
+        <script src="../src/jquery-livequery.js"></script>
         <script src="../src/eui.js"></script>
+        <script src="../src/eui.widget.js"></script>
+        <script src="../src/eui.widget.tabs.js"></script>
+        <script src="../src/eui.widget.datepicker.js"></script>
+        
         <script src="eui_test.js"></script>
         <!-- Removing access to jQuery and $. But it'll still be available as _$, if
              you REALLY want to mess around with jQuery in the console. REMEMBER WE
@@ -17,11 +25,6 @@
         <script>window._$ = jQuery.noConflict(true);</script>
     </head>
     <body>
-        <div id="qunit"></div>
-        <div id="qunit-fixture">
-            <span>lame test markup</span>
-            <span>normal test markup</span>
-            <span>awesome test markup</span>
-        </div>
+        <div id="sandbox"></div>
     </body>
 </html>
