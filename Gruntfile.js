@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         uglify: {
             all: {
                 files: {
-                    "dist/eui.min.js": ["src/jquery-livequery.js", "src/eui.js", "src/eui.widget.js", "src/eui.widget.tabs.js", "src/eui.widget.datepicker.js"]
+                    "dist/eui.min.js": ["src/jquery.support.js", "src/jquery-livequery.js", "src/eui.js", "src/eui.widget.js", "src/eui.widget.tabs.js", "src/eui.widget.datepicker.js", "src/eui.validate.js"]
                 },
                 options: {
                     banner: "/* BUILD */",

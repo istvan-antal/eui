@@ -24,6 +24,9 @@
         // This will run before each test in this module.
         setup: function() {
             this.sandbox = $('#sandbox').empty();
+        },
+        teardown: function() {
+            this.sandbox = $('#sandbox').empty();
         }
     });
 
@@ -39,6 +42,31 @@
             equal($($(self.sandbox.children()[0]).children()[0]).hasClass('ui-datepicker'), true, 'widget should be initialized');
             start();
         }, 1000);
+    });
+    
+    asyncTest('does validation work', function() {
+        var form,
+            didNotSubmit = true;
+            
+        this.sandbox.html('<form class="eui-validate-form"><input data-eui-validate="non-empty" class="eui-validate" data- type="text"></form>');
+
+        form = this.sandbox.find('form');
+        
+        form.on('validateSubmit', function () {
+            didNotSubmit = false;
+        });
+        
+        form.find('input').on('validateFail', function () {
+            ok(didNotSubmit);
+            start();
+        });
+
+        form.submit();
+        /*
+        setTimeout(function() {
+            equal($($(self.sandbox.children()[0]).children()[0]).hasClass('ui-datepicker'), true, 'widget should be initialized');
+            start();
+        }, 1000);*/
     });
 
     /*asyncTest('can be used with dynamic HTML', function() {
