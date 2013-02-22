@@ -48,7 +48,7 @@
         var form,
             didNotSubmit = true;
             
-        this.sandbox.html('<form class="eui-validate-form"><input data-eui-validate="non-empty" class="eui-validate" data- type="text"></form>');
+        this.sandbox.html('<form class="eui-validate-form"><input data-eui-validate="non-empty" class="eui-validate" type="text"></form>');
 
         form = this.sandbox.find('form');
         
